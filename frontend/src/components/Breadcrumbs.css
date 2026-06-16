@@ -1,0 +1,14 @@
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem 1.5rem;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.875rem;
+}
+.crumb { display: inline-flex; align-items: center; gap: 0.25rem; }
+.crumb-sep { color: var(--muted); margin: 0 0.15rem; font-size: 1.1em; }
+.crumb a { color: var(--blue); text-decoration: none; }
+.crumb a:hover { text-decoration: underline; }
+.crumb-current { color: var(--text); font-weight: 500; }
