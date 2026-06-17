@@ -1,0 +1,51 @@
+.admin-dashboard {
+  max-width: 1100px;
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 1.5rem;
+}
+.admin-dashboard h2 { margin: 0 0 1.25rem; font-weight: 500; color: var(--text); }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.stat-card {
+  background: #f8fbff;
+  border: 1px solid rgba(75,110,247,0.18);
+  border-radius: 14px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.stat-num { font-size: 2rem; font-weight: 600; color: var(--blue); }
+.stat-label { font-size: 0.85rem; color: var(--muted); }
+.admin-actions { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.action-btn {
+  padding: 0.6rem 1.25rem;
+  background: var(--surface);
+  color: var(--blue);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+.action-btn:hover { background: var(--blue-focus); border-color: #c6dafc; }
+.recent-section { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; }
+.recent-section h3 { margin: 0 0 1rem; font-weight: 500; font-size: 1rem; color: var(--text); }
+.table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+.table th { text-align: left; padding: 0.6rem 0.5rem; border-bottom: 2px solid var(--border); color: var(--muted); font-weight: 500; }
+.table td { padding: 0.55rem 0.5rem; border-bottom: 1px solid var(--border); color: var(--text); }
+.table tr:hover td { background: #f8f9fa; }
+.empty { text-align: center; color: var(--muted); padding: 1.5rem; }
+.badge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.badge-present { background: #e6f4ea; color: #1e8e3e; }
+.badge-late { background: #fef7e0; color: #e37400; }
+.badge-absent { background: #fce8e6; color: #d93025; }
+.badge-cancelled { background: #f1f3f4; color: #5f6368; }
