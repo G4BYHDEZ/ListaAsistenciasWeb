@@ -5,7 +5,11 @@ const cors = require('cors');
 
 const app = express();
 app.use(express.json());
-app.use(cors()); // Permite peticiones desde el origen de React
+app.use(cors({
+  origin: [
+    "https://tu-app.vercel.app"
+  ]
+}));
 
 // Configuración de la base de datos universidad_asistencia
 const db = mysql.createPool({
