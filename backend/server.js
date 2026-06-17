@@ -5,7 +5,9 @@ const mysql = require('mysql2/promise');
 const cors = require('cors');
 
 const app = express();
-app.use(express.json());
+app.use(cors({
+    origin: 'http://listaalumnos.utportfolio.cloud'
+}));
 app.use(cors()); // Permite peticiones desde el origen de React
 
 // Configuración de la base de datos universidad_asistencia

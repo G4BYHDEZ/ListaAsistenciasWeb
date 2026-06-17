@@ -7,7 +7,7 @@ export default function AdminDashboard() {
   const [stats, setStats] = useState({ total_cursos: 0, total_alumnos: 0, total_asistencias: 0 });
 
   useEffect(() => {
-    fetch('http://listaalumnos.utportfolio.cloud:5000/api/admin/stats')
+    fetch('http://listaalumnos.utportfolio.cloud/api/admin/stats')
       .then(res => res.json())
       .then(data => setStats(data))
       .catch(err => console.error(err));
