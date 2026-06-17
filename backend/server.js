@@ -10,8 +10,8 @@ app.use(cors()); // Permite peticiones desde el origen de React
 // Configuración de la base de datos universidad_asistencia
 const db = mysql.createPool({
     host: 'localhost',
-    user: 'root',
-    password: 'MySQL_007', // Cambia esto por tu contraseña real
+    user: 'gabriel',
+    password: '1234', // Cambia esto por tu contraseña real
     database: 'universidad_asistencia',
 });
 
@@ -135,4 +135,4 @@ app.get('/api/admin/stats', async (req, res) => {
     }
 });
 
-app.listen(5000, () => console.log('Servidor corriendo en http://localhost:5000'));
+app.listen(5000, () => console.log('Servidor corriendo en http://listaalumnos.utportfolio.cloud:5000'));

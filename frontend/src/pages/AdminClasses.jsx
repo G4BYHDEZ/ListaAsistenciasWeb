@@ -5,7 +5,7 @@ export default function AdminClasses() {
   const [classes, setClasses] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/admin/courses')
+    fetch('http://listaalumnos.utportfolio.cloud:5000/api/admin/courses')
       .then(res => res.json())
       .then(data => setClasses(data))
       .catch(err => console.error(err));
