@@ -9,10 +9,11 @@ app.use(cors()); // Permite peticiones desde el origen de React
 
 // Configuración de la base de datos universidad_asistencia
 const db = mysql.createPool({
-    host: 'localhost',
-    user: 'root',       // Ajusta con tus credenciales locales
-    password: 'MySQL_007',       // Ajusta con tus credenciales locales
-    database: 'universidad_asistencia'
+    host: process.env.MYSQLHOST,
+    user: process.env.MYSQLUSER,
+    password: process.env.MYSQLPASSWORD,
+    database: process.env.MYSQLDATABASE,
+    port: process.env.MYSQLPORT
 });
 
 // ENDPOINT DE LOGIN CORREGIDO EN SERVER.JS
