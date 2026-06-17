@@ -9,7 +9,7 @@ export default function AdminStudents() {
 
   // 1. Cargar la lista de cursos disponibles para el Administrador al iniciar
   useEffect(() => {
-    fetch('http://listaalumnos.utportfolio.cloud/api/admin/courses')
+    fetch('http://localhost:5000/api/admin/courses')
       .then((res) => res.json())
       .then((data) => {
         setCourses(data);
@@ -23,7 +23,7 @@ export default function AdminStudents() {
   // 2. Cargar los alumnos y sus asistencias cuando cambia el curso o la fecha elegida
   useEffect(() => {
     if (selectedCourse) {
-      fetch(`http://listaalumnos.utportfolio.cloud/api/courses/${selectedCourse}/attendance/${date}`)
+      fetch(`http://localhost:5000/api/courses/${selectedCourse}/attendance/${date}`)
         .then((res) => res.json())
         .then((data) => setStudentsList(data))
         .catch((err) => console.error('Error al cargar alumnos:', err));
@@ -57,7 +57,7 @@ export default function AdminStudents() {
     }));
 
     try {
-      const res = await fetch('http://listaalumnos.utportfolio.cloud/api/attendance/save', {
+      const res = await fetch('http://localhost:5000/api/attendance/save', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id_curso: selectedCourse, fecha: date, registros })
