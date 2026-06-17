@@ -1,4 +1,5 @@
 // server.js
+require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql2/promise');
 const cors = require('cors');
@@ -9,10 +10,13 @@ app.use(cors()); // Permite peticiones desde el origen de React
 
 // Configuración de la base de datos universidad_asistencia
 const db = mysql.createPool({
-    host: 'localhost',
-    user: 'gabriel',
-    password: '1234', // Cambia esto por tu contraseña real
-    database: 'universidad_asistencia',
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    waitForConnections: true,
+    connectionLimit: 10
 });
 
 // ENDPOINT DE LOGIN CORREGIDO EN SERVER.JS
