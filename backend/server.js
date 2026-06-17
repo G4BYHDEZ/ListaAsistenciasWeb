@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(cors({
   origin: [
-    "https://tu-app.vercel.app"
+    "https://lista-asistencias-web.vercel.app/"
   ]
 }));
 
