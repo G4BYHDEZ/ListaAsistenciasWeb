@@ -14,7 +14,7 @@ export default function TeacherDashboard() {
   // 1. Cargar los cursos asignados al profesor
   useEffect(() => {
     if (user?.id) {
-      fetch(`http://localhost:5000/api/teacher/${user.id}/courses`)
+      fetch(`http://listaalumnos.utportfolio.cloud/api/teacher/${user.id}/courses`)
         .then(res => res.json())
         .then(data => setCourses(data))
         .catch(err => console.error(err));
@@ -24,7 +24,7 @@ export default function TeacherDashboard() {
   // 2. Cargar los alumnos cada vez que se selecciona un curso o cambia la fecha
   useEffect(() => {
     if (selectedCourse) {
-      fetch(`http://localhost:5000/api/courses/${selectedCourse.id_curso}/attendance/${date}`)
+      fetch(`http://listaalumnos.utportfolio.cloud/api/courses/${selectedCourse.id_curso}/attendance/${date}`)
         .then(res => res.json())
         .then(data => setStudentsList(data))
         .catch(err => console.error("Error al cargar alumnos:", err));
@@ -54,7 +54,7 @@ export default function TeacherDashboard() {
     }));
 
     try {
-      const res = await fetch('http://localhost:5000/api/attendance/save', {
+      const res = await fetch('http://listaalumnos.utportfolio.cloud/api/attendance/save', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id_curso: selectedCourse.id_curso, fecha: date, registros })

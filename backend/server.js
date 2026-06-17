@@ -5,7 +5,9 @@ const mysql = require('mysql2/promise');
 const cors = require('cors');
 
 const app = express();
-app.use(cors());// Permite peticiones desde el origen de React
+app.use(cors({
+    origin: 'http://listaalumnos.utportfolio.cloud'
+}));// Permite peticiones desde el origen de React
 
 // Configuración de la base de datos universidad_asistencia
 const db = mysql.createPool({
@@ -138,4 +140,4 @@ app.get('/api/admin/stats', async (req, res) => {
     }
 });
 
-app.listen(5000, () => console.log('Servidor corriendo en http://localhost:5000'));
+app.listen(5000, () => console.log('Servidor corriendo en http://listaalumnos.utportfolio.cloud'));
