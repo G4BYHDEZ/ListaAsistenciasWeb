@@ -2,18 +2,10 @@
 const express = require('express');
 const mysql = require('mysql2/promise');
 const cors = require('cors');
-const axios = require('axios');
+
 const app = express();
 app.use(express.json());
-app.use(cors({
-  origin: [
-    "https://lista-asistencias-web.vercel.app/"
-  ]
-}));
-
-axios.get(
-  `${import.meta.env.VITE_API_URL}/api/cursos`
-);
+app.use(cors()); // Permite peticiones desde el origen de React
 
 // Configuración de la base de datos universidad_asistencia
 const db = mysql.createPool({
