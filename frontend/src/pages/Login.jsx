@@ -16,7 +16,7 @@ export default function Login() {
 
     try {
       // Hacemos la validación directa aquí
-      const response = await fetch('http://localhost:5099/api/login', {
+      const response = await fetch('http://listaalumnos.utportfolio.cloud/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
