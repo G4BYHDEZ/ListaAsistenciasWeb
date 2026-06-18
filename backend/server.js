@@ -5,6 +5,7 @@ const mysql = require('mysql2/promise');
 const cors = require('cors');
 
 const app = express();
+app.use(express.json());
 app.use(cors({
     origin: 'http://listaalumnos.utportfolio.cloud'
 }));// Permite peticiones desde el origen de React
