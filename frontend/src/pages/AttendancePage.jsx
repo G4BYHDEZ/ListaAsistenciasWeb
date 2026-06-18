@@ -15,7 +15,7 @@ export default function AttendancePage() {
   // Efecto 1: Carga alumnos y asistencia de la fecha seleccionada
   useEffect(() => {
     if (view === 'attendance') {
-      fetch(`http://listaalumnos.utportfolio.cloud/api/courses/${courseId}/attendance/${date}`)
+      fetch(`http://localhost:5099/api/courses/${courseId}/attendance/${date}`)
         .then(res => res.json())
         .then(data => setStudentsList(data))
         .catch(err => console.error(err));
@@ -25,12 +25,12 @@ export default function AttendancePage() {
   // Efecto 2: Carga reportes o historial según la pestaña activa
   useEffect(() => {
     if (view === 'report') {
-      fetch(`http://listaalumnos.utportfolio.cloud/api/courses/${courseId}/summary`)
+      fetch(`http://localhost:5099/api/courses/${courseId}/summary`)
         .then(res => res.json())
         .then(data => setReportList(data))
         .catch(err => console.error(err));
     } else if (view === 'history') {
-      fetch(`http://listaalumnos.utportfolio.cloud/api/courses/${courseId}/history`)
+      fetch(`http://localhost:5099/api/courses/${courseId}/history`)
         .then(res => res.json())
         .then(data => setHistoryList(data))
         .catch(err => console.error(err));
@@ -53,7 +53,7 @@ export default function AttendancePage() {
     }));
 
     try {
-      const res = await fetch('http://listaalumnos.utportfolio.cloud/api/attendance/save', {
+      const res = await fetch('http://localhost:5099/api/attendance/save', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id_curso: courseId, fecha: date, registros })

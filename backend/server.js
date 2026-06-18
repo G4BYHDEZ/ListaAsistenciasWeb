@@ -141,4 +141,4 @@ app.get('/api/admin/stats', async (req, res) => {
     }
 });
 
-app.listen(5000, () => console.log('Servidor corriendo en http://listaalumnos.utportfolio.cloud'));
+app.listen(5099, () => console.log('Servidor corriendo en http://localhost:5099'));
