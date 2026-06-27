@@ -22,7 +22,7 @@ const db = mysql.createPool({
 });
 
 // ENDPOINT DE LOGIN CORREGIDO EN SERVER.JS
-app.post('/api/login', async (req, res) => {
+app.post('/login', async (req, res) => {
     const { email, password } = req.body;
     try {
         // Pasamos tanto el email como el password al procedimiento almacenado
@@ -50,7 +50,7 @@ app.post('/api/login', async (req, res) => {
 });
 
 // 2. CURSOS DEL DOCENTE (Usa sp_cursos_docente)
-app.get('/api/teacher/:id/courses', async (req, res) => {
+app.get('/teacher/:id/courses', async (req, res) => {
     try {
         const [rows] = await db.query('CALL sp_cursos_docente(?)', [req.params.id]);
         res.json(rows[0]);
@@ -60,7 +60,7 @@ app.get('/api/teacher/:id/courses', async (req, res) => {
 });
 
 // 3. TODOS LOS CURSOS - ADMIN (Usa sp_cursos_admin)
-app.get('/api/admin/courses', async (req, res) => {
+app.get('/admin/courses', async (req, res) => {
     try {
         const [rows] = await db.query('CALL sp_cursos_admin()');
         res.json(rows[0]);
@@ -70,7 +70,7 @@ app.get('/api/admin/courses', async (req, res) => {
 });
 
 // 4. LISTA DE ESTUDIANTES POR CURSO - ADMIN
-app.get('/api/courses/:id/students', async (req, res) => {
+app.get('/courses/:id/students', async (req, res) => {
     try {
         const [rows] = await db.query('CALL sp_estudiantes_curso(?)', [req.params.id]);
         res.json(rows[0]);
@@ -80,7 +80,7 @@ app.get('/api/courses/:id/students', async (req, res) => {
 });
 
 // 5. ASISTENCIA POR FECHA (Usa sp_lista_por_fecha)
-app.get('/api/courses/:id/attendance/:date', async (req, res) => {
+app.get('/courses/:id/attendance/:date', async (req, res) => {
     try {
         const [rows] = await db.query('CALL sp_lista_por_fecha(?, ?)', [req.params.id, req.params.date]);
         res.json(rows[0]);
@@ -90,7 +90,7 @@ app.get('/api/courses/:id/attendance/:date', async (req, res) => {
 });
 
 // 6. GUARDAR/UPSERT ASISTENCIA (Usa sp_upsert_asistencia)
-app.post('/api/attendance/save', async (req, res) => {
+app.post('/attendance/save', async (req, res) => {
     const { id_curso, fecha, registros } = req.body; 
     // registros = [{ id_estudiante, estado, observaciones }]
     try {
@@ -110,7 +110,7 @@ app.post('/api/attendance/save', async (req, res) => {
 });
 
 // 7. REPORTE / RESUMEN GENERAL GRUPO (Usa sp_resumen_grupo)
-app.get('/api/courses/:id/summary', async (req, res) => {
+app.get('/courses/:id/summary', async (req, res) => {
     try {
         const [rows] = await db.query('CALL sp_resumen_grupo(?)', [req.params.id]);
         res.json(rows[0]);
@@ -120,7 +120,7 @@ app.get('/api/courses/:id/summary', async (req, res) => {
 });
 
 // 8. HISTORIAL DE LISTAS TOMADAS (Usa sp_fechas_con_lista)
-app.get('/api/courses/:id/history', async (req, res) => {
+app.get('/courses/:id/history', async (req, res) => {
     try {
         const [rows] = await db.query('CALL sp_fechas_con_lista(?)', [req.params.id]);
         res.json(rows[0]);
@@ -130,7 +130,7 @@ app.get('/api/courses/:id/history', async (req, res) => {
 });
 
 // 9. PANEL GENERAL METRICAS (Opcional simplificado para Contadores del Dashboard)
-app.get('/api/admin/stats', async (req, res) => {
+app.get('/admin/stats', async (req, res) => {
     try {
         const [[{ total_cursos }]] = await db.query('SELECT COUNT(*) AS total_cursos FROM cursos');
         const [[{ total_alumnos }]] = await db.query('SELECT COUNT(*) AS total_alumnos FROM estudiantes');
